@@ -1,12 +1,16 @@
 package oop;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 
 import java.io.FileInputStream;
 
@@ -17,8 +21,7 @@ public class HiireAsukoht extends Application{
     public void start(Stage primaryStage) throws Exception{
         // vaja lava
         primaryStage.setTitle("Hiire koordinaadid.");
-        // kasutame hboxi
-        HBox hbox = new HBox();
+
 
         // proovimine
         // pildi loomine
@@ -30,12 +33,11 @@ public class HiireAsukoht extends Application{
         imageView.setFitWidth(500);
         imageView.setPreserveRatio(true);
         Group root = new Group(imageView);
-        Scene scene = new Scene(root,600,500);
-        primaryStage.setScene(scene);
 
-        /*
+
+
         // nupuvajutamise teema
-        hbox.setOnMousePressed(new EventHandler<MouseEvent>() {
+        imageView.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 // hiirevajutuse koordinaadid
@@ -46,22 +48,23 @@ public class HiireAsukoht extends Application{
 
                 koordinaadid.setTranslateX(x);
                 koordinaadid.setTranslateY(y);
-                hbox.getChildren().add(koordinaadid);
+                root.getChildren().add(koordinaadid);
             }
         });
 
-        hbox.setOnMouseReleased(new EventHandler<MouseEvent>() {
+        imageView.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                hbox.getChildren().clear();
+                root.getChildren().remove(root.getChildren().size()-1);
             }
         });
+
         // lisame lavale stseeni hbox
-        //primaryStage.setScene(new Scene(hbox));
+        primaryStage.setScene(new Scene(root));
         // kuvame lava
 
 
-         */
+
         primaryStage.show();
     }
 
